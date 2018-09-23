@@ -10,11 +10,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.blogApp.common.utility.BlogConstants;
 
 @Entity
 @Table(name = "st_user_role")
-@NamedQueries(value = { @NamedQuery(name = BlogConstants.USER_ROLE_GET_ALL_USER_ROLES, query = BlogConstants.QUERY_GET_ALL_USER_ROLES) })
+@NamedQueries(value = {
+		@NamedQuery(name = BlogConstants.USER_ROLE_GET_ALL_USER_ROLES, query = BlogConstants.QUERY_GET_ALL_USER_ROLES) })
 public class UserRole {
 	private Long roleId;
 	private String roleDesc;
@@ -35,7 +38,6 @@ public class UserRole {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_role_id")
 	public Long getRoleId() {
 		return roleId;
@@ -45,7 +47,7 @@ public class UserRole {
 		this.roleId = roleId;
 	}
 
-	@Column(name = "user_role_desc")
+	@Column(name = "user_role_desc", length = 30, unique = true)
 	public String getRoleDesc() {
 		return roleDesc;
 	}

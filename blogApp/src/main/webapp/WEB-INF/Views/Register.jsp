@@ -13,7 +13,7 @@
 <script
 	src='<c:url value="Scripts/Bootstrap/js/bootstrap.min.js"></c:url>'></script>
 <link rel="stylesheet"
-	href='<c:url value="Scripts/CSS/Login.css"></c:url>'>
+	href='<c:url value="Scripts/CSS/Register.css"></c:url>'>
 <title>Blog App</title>
 </head>
 <body>
@@ -27,18 +27,26 @@
 					</div>
 				</c:if>
 				<h3 align="center">Blog.com</h3>
-				<form id="loginForm" action="Login" method="post">
+				<form id="loginForm" action="Register" method="post">
 					<div class="form-group">
 						<label for="userName">Username:</label> <input type="text"
 							name="userName" class="form-control" id="userName">
+					</div>
+					<div class="form-group">
+						<label for="firstName">First Name:</label> <input type="text"
+							name="firstName" class="form-control" id="firstName">
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name:</label> <input type="text"
+							name="lastName" class="form-control" id="lastName">
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label> <input type="password"
 							name="password" class="form-control" id="password">
 					</div>
 					<div align="center">
-						<button type="submit" class="btn btn-primary">Login</button>
-						<a href="Register" class="btn btn-primary" role="button">Register</a>
+						<button type="submit" class="btn btn-primary">Register</button>
+						<a href="Login" class="btn btn-primary" role="button">Login</a>
 					</div>
 				</form>
 			</div>

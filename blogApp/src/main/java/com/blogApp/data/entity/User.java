@@ -13,11 +13,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.blogApp.common.utility.BlogConstants;
 
 @Entity
-@Table(name = "blog_user")
-@NamedQueries(value = {
+@Table(name = "st_blog_user")
+@NamedQueries(value = { @NamedQuery(name = BlogConstants.USER_GET_NEXT_ID, query = BlogConstants.QUERY_GET_NEXT_ID),
 		@NamedQuery(name = BlogConstants.USER_VALIDATE_USER, query = BlogConstants.QUERY_VALIDATE_USER) })
 public class User {
 	private Long userId;
@@ -41,7 +43,6 @@ public class User {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	public Long getUserId() {
 		return userId;
@@ -51,7 +52,7 @@ public class User {
 		this.userId = userId;
 	}
 
-	@Column(name = "user_name")
+	@Column(name = "user_name", length = 30, nullable = false, unique = true)
 	public String getUserName() {
 		return userName;
 	}
@@ -60,7 +61,7 @@ public class User {
 		this.userName = userName;
 	}
 
-	@Column(name = "user_password")
+	@Column(name = "user_password", length = 30, nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -69,7 +70,7 @@ public class User {
 		this.password = password;
 	}
 
-	@Column(name = "first_name")
+	@Column(name = "first_name", length = 30, nullable = false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -78,7 +79,7 @@ public class User {
 		this.firstName = firstName;
 	}
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", length = 30, nullable = false)
 	public String getLastName() {
 		return lastName;
 	}

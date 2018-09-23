@@ -24,4 +24,9 @@ public class BlogServiceImp implements BlogServiceIfc {
 	public User validateUser(String userName, String password) {
 		return dao.validateUser(userName, password);
 	}
+
+	@Override
+	public User registerUser(String userName, String firstName, String lastName, String password, UserRole userRole) {
+		return dao.registerUser(userName, firstName, lastName, password, userRole);
+	}
 }

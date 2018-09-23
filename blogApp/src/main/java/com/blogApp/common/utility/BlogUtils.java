@@ -11,10 +11,6 @@ import com.blogApp.data.entity.UserRole;
 public class BlogUtils {
 	private static HashMap<Long, UserRole> userRoleMap = new HashMap<>();
 
-	private static HashMap<Long, UserRole> getUserRoleMap() {
-		return userRoleMap;
-	}
-
 	public static void initData(List<UserRole> userRoleList) {
 		System.out.println("Starting Init Data at " + new Date());
 		for (UserRole userRole : userRoleList) {
@@ -24,6 +20,14 @@ public class BlogUtils {
 		System.out.println("User Roles Map : " + getUserRoleMap().size());
 	}
 
+	private static HashMap<Long, UserRole> getUserRoleMap() {
+		return userRoleMap;
+	}
+	
+	public static UserRole getUserRoleById(Long roleId) {
+		return getUserRoleMap().get(roleId);
+	}
+	
 	public static Boolean isAuthorized(HttpSession session) {
 		if (session.getAttribute(BlogConstants.CURRENT_USER) != null)
 			return Boolean.TRUE;
